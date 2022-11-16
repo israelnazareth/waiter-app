@@ -16,8 +16,17 @@ export const Content = styled.div`
   justify-content: space-between;
 
   .page-details {
-    h1, h2 {
-      color: white;
+    h1 {
+      color: #fff;
+      font-size: 32px;
+    }
+
+    h2 {
+      color: #fff;
+      font-weight: 400;
+      font-size: 16px;
+      opacity: 0.9;
+      margin-top: 6px;
     }
   }
 `;
