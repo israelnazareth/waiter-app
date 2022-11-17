@@ -39,6 +39,7 @@ export const ModalBody = styled.div`
     margin-top: 32px;
 
     small {
+      font-weight: 500;
       font-size: 14px;
       opacity: 0.8;
     }
@@ -48,6 +49,68 @@ export const ModalBody = styled.div`
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+  }
+`;
+
+export const OrderDetails = styled.div`
+  margin-top: 32px;
+
+  > strong {
+    font-weight: 500;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  .order-items {
+    margin-top: 16px;
+
+    .item {
+      display: flex;
+
+      & + .item {
+        margin-top: 16px;
+      }
+
+      img {
+        border-radius: 6px;
+        object-fit: cover;
+      }
+
+      .quantity {
+        font-size: 14px;
+        color: #666;
+        display: block;
+        min-width: 20px;
+        margin-left: 12px;
+      }
+
+      .product-details {
+        margin-left: 4px;
+
+        strong {
+          display: block;
+          margin-bottom: 4px;
+        }
+
+        span {
+          font-size: 14px;
+          color: #666;
+        }
+      }
+    }
+  }
+
+  .total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+
+    span {
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0.8;
     }
   }
 `;
