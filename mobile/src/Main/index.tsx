@@ -1,6 +1,6 @@
 import { ActivityIndicator } from 'react-native';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { api } from '../utils/api';
 
 import {
   Container,
@@ -11,35 +11,36 @@ import {
   CenteredContainer
 } from './styles';
 
+import { Category } from '../types/Category';
+import { Product } from '../types/Product';
+import { CartItem } from '../types/CartItem';
+
 import { Button } from '../components/Button';
 import { Cart } from '../components/Cart';
 import { Categories } from '../components/Categories';
 import { Header } from '../components/Header';
 import { Menu } from '../components/Menu';
 import { TableModal } from '../components/TableModal';
-import { CartItem } from '../types/CartItem';
-import { Product } from '../types/Product';
-
-import { Empty } from '../components/Icons/Empty';
 import { Text } from '../components/Text';
-import { Category } from '../types/Category';
+import { Empty } from '../components/Icons/Empty';
 
 
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
   const [selectedTable, setSelectedTable] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState<Category[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    const uri = 'http://172.23.235.228:3001';
-    axios.get(`${uri}/categories`).then((response) => {
-      setCategories(response.data);
-    });
-    axios.get(`${uri}/products`).then((response) => {
-      setProducts(response.data);
+    Promise.all([
+      api.get('/categories'),
+      api.get('/products'),
+    ]).then(([categoriesResponse, productsResponse]) => {
+      setCategories(categoriesResponse.data);
+      setProducts(productsResponse.data);
+      setIsLoading(false);
     });
   }, []);
 
