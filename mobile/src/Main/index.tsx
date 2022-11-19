@@ -1,13 +1,6 @@
-import { useState } from 'react';
 import { ActivityIndicator } from 'react-native';
-import { Button } from '../components/Button';
-import { Cart } from '../components/Cart';
-import { Categories } from '../components/Categories';
-import { Header } from '../components/Header';
-import { Menu } from '../components/Menu';
-import { TableModal } from '../components/TableModal';
-import { CartItem } from '../types/CartItem';
-import { Product } from '../types/Product';
+import { useState } from 'react';
+
 import {
   Container,
   CategoriesContainer,
@@ -17,11 +10,26 @@ import {
   CenteredContainer
 } from './styles';
 
+import { Button } from '../components/Button';
+import { Cart } from '../components/Cart';
+import { Categories } from '../components/Categories';
+import { Header } from '../components/Header';
+import { Menu } from '../components/Menu';
+import { TableModal } from '../components/TableModal';
+import { CartItem } from '../types/CartItem';
+import { Product } from '../types/Product';
+
+import { products as mockProducts } from '../mocks/products';
+import { Empty } from '../components/Icons/Empty';
+import { Text } from '../components/Text';
+
+
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
   const [selectedTable, setSelectedTable] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoading] = useState(false);
+  const [products] = useState<Product[]>(mockProducts);
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
@@ -102,9 +110,21 @@ export function Main() {
               <Categories />
             </CategoriesContainer>
 
-            <MenuContainer>
-              <Menu onAddToCart={handleAddToCart} />
-            </MenuContainer>
+            {products.length > 0 ? (
+              <MenuContainer>
+                <Menu
+                  onAddToCart={handleAddToCart}
+                  products={products}
+                />
+              </MenuContainer>
+            ) : (
+              <CenteredContainer>
+                <Empty />
+                <Text color="#666" style={{ marginTop: 24 }}>
+                  Nenhum produto foi encontrado!
+                </Text>
+              </CenteredContainer>
+            )}
           </>
         )}
 
