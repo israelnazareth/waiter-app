@@ -38,8 +38,14 @@ export function OrdersBoard({ icon, title, orders, onCancelOrder, onChangeOrderS
 
     await api.patch(`/orders/${selectedOrder?._id}`, { status });
 
-    toast.success(`O pedido da mesa ${selectedOrder?.table} teve o status alterado!`);
     onChangeOrderStatus(selectedOrder!._id, status);
+
+    const message = `O pedido da mesa ${selectedOrder?.table}`;
+
+    status === 'IN_PRODUCTION'
+      ? toast.success(`${message} foi para produção!`)
+      : toast.success(`${message} está pronto!`);
+
     setIsLoading(false);
     setIsModalVisible(false);
   }
@@ -49,7 +55,10 @@ export function OrdersBoard({ icon, title, orders, onCancelOrder, onChangeOrderS
 
     await api.delete(`/orders/${selectedOrder?._id}`);
 
-    toast.success(`O pedido da mesa ${selectedOrder?.table} foi cancelado!`);
+    selectedOrder?.status === 'DONE'
+      ? toast.success('O pedido foi removido!')
+      : toast.success(`O pedido da mesa ${selectedOrder?.table} foi cancelado!`);
+
     onCancelOrder(selectedOrder!._id);
     setIsLoading(false);
     setIsModalVisible(false);

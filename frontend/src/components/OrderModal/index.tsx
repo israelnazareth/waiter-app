@@ -100,7 +100,9 @@ export function OrderModal({ visible, order, onClose, onCancelOrder, onChangeOrd
             onClick={onCancelOrder}
             disabled={isLoading}
           >
-            <strong>Cancelar pedido</strong>
+            <strong>
+              {order.status === 'DONE' ? 'Limpar Pedido' : 'Cancelar Pedido'}
+            </strong>
           </button>
         </Actions>
       </ModalBody>
