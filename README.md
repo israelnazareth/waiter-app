@@ -174,15 +174,10 @@ ou
 ```bash
 yarn start
 ```
--   Inserir o IP da sua máquina no arquivo ```api.ts``` na pasta ```utils```.
+-   Inserir o IP da sua máquina no arquivo `api.ts` na pasta `utils`.
 
-A aplicação "server" se integra com a "web" e a "mobile", realizando o Back-end. Caso queira rodar as aplicações basta utilizar os seguintes comandos:
-
-Rodando a aplicação web, primeiro iniciar o servidor e depois o próprio "web", ambos com o comando:
-
-```bash
-npm run dev
-```
+<br>
+<br>
 
 <a id="-contato"></a>
 
@@ -198,13 +193,9 @@ Meu nome é Israel, sou desenvolvedor web formado pela [Trybe](https://www.betry
 
 ### Ao [Mateus Silva](https://br.linkedin.com/in/mateusilva/)
 
-<img src="./files/ms.jpg" height=50 
-alt="Time Rocketseat" border-radius='120px'>
-
-<style>
-  img {
-
-  }
-</style>
+<a href="https://br.linkedin.com/in/mateusilva/">
+  <img src="./files/ms.jpg" height=50 
+  alt="Time Rocketseat" border-radius='120px'>
+</a>
 
 E sua equipe por terem proporcionado esse evento de muita qualidade e aprendizado.
