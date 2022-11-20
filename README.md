@@ -193,7 +193,7 @@ Meu nome é Israel, sou desenvolvedor web formado pela [Trybe](https://www.betry
 
 ### Ao [Mateus Silva](https://br.linkedin.com/in/mateusilva/)
 
-<a href="https://br.linkedin.com/in/mateusilva/">
+<a href="https://br.linkedin.com/in/mateusilva/" target="blank">
   <img src="./files/ms.jpg" height=50 
   alt="Time Rocketseat" border-radius='120px'>
 </a>
